@@ -6,7 +6,7 @@
                   <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
                   <b-navbar-nav>
-                        <b-nav-item class="bg-dark rounded"> Question {{ this.index }}/10 </b-nav-item>
+                        <b-nav-item class="bg-dark rounded"> Question {{ index }}/10 </b-nav-item>
                         <b-nav-item href="#" disabled></b-nav-item>
                   </b-navbar-nav>
             </b-navbar>
@@ -18,11 +18,6 @@ export default {
       name: "laalheader",
       props: {
             index: Number,
-      },
-      data() {
-            return{
-                  index: index + 1,
-            }
       },
 };
 </script>

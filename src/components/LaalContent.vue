@@ -11,7 +11,12 @@
 
                   <hr class="my-4" />
                   <b-list-group>
-                        <b-list-group-item id="bg-list" v-for="answer in answer" :key="answer.index">
+                        <b-list-group-item
+                              id="bg-list"
+                              v-for="(answer, index) in answers"
+                              :key="answer.index"
+                              @click="answerIndex(index)"
+                        >
                               {{ answer }}
                         </b-list-group-item>
                   </b-list-group>
@@ -22,22 +27,34 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
       props: {
             QuestionList: Object,
             next: Function,
+            correctAnswer:false,
       },
       data() {
             return {
                   allAnswers: undefined,
             };
       },
+      methods:{
+            answerIndex(index){
+                  let correctAnswer = this.answers.indexOf(correctAnswer);
+                  if (correctAnswer === index) {
+                        this.correctAnswer = true
+                  };
+                  console.log();
+            }
+      },
       computed: {
-            answer() {
+            answers() {
                   let Answers = [...this.QuestionList.incorrect_answers];
                   Answers.push(this.QuestionList.correct_answer);
-                  return Answers;
+                  return _.shuffle(Answers);
             },
+            
       },
 };
 </script>
@@ -53,7 +70,6 @@ export default {
       color: rgb(31, 31, 31);
 }
 #bg-list:hover {
-      width: 450px;
       background-color: rgb(118, 118, 118);
       color: blanchedalmond;
       font-weight: 700;

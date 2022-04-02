@@ -30,13 +30,13 @@ export default {
       },
       computed: {
             headerIndex() {
-                  let headerIndex = this.index+1;
+                  let headerIndex = this.index + 1;
                   return headerIndex;
             },
       },
       methods: {
             next() {
-                  if (this.index < 10) {
+                  if (this.index < 9) {
                         this.index++;
                   }
             },
